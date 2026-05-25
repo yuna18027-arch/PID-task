@@ -1,1 +1,23 @@
-# PID-task
+# What is PID ?
+ A PID controller is an instrument that receives input data from sensors, calculates the difference between the actual value and the desired setpoint, and adjusts outputs to control variables such as temperature, flow rate, speed, pressure, and voltage. It does this through three mechanisms: proportional control, which reacts to current error; integral control, which addresses accumulated past errors; and derivative control, which predicts future errors. The PID controller sums those three components to compute the output.
+ 
+ # Why do we use PID?
+ PID is a closed loop system which provides you feedback every output command, this helps you to achieve accuracy and make sure that everything is going like what you've planned.
+
+ # What's Proportional control?
+ It's a type of linear feedback system where a machine's corrective action is scaled directly to the size of the error(the difference between the set point and the actual state) by multiplying it to a constant k_p.
+
+### For instance:
+
+ A motor has a direction of 5 degrees, which corresponds to 0.5v and the set point is 45 degrees, corresponding to 4.5v. The error here equals to 4v (4.5-0.5). We multiply this error by a constant k_p, whose appropiate value ypu determine. Let's assume its value is 5 in this case
+
+ The correction action will be => 4*5 = 20v (you can use a voltage regulator in this case) however, this value might exceed the set point, causing an overshoot. After that, the system will recalculate all this again and it's possible that another overshoot may occur, and it might even continue oscillating.
+
+ At this point, the role of **derivative control** comes into play.
+
+ # What's the role of Derivative control?
+
+ Its primary role is to predict future error by analyzing the rate at which the process variable is changing and multiplting it by constant k_d, thereby applying a dampening effect that minimizes overshoot and stabilizes the system.
+
+ # What's the role of Integral control?
+ It's primary role is to eliminate steady-state error. By accumulating the error over time and multiplying it by constant k_i, it forces the system's output to exactly match the desired target, compensating for persistent offsets and external disturbances. 
