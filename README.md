@@ -11,7 +11,7 @@
 
  A motor has a direction of 5 degrees, which corresponds to 0.5v and the set point is 45 degrees, corresponding to 4.5v. The error here equals to 4v (4.5-0.5). We multiply this error by a constant k_p, whose appropiate value ypu determine. Let's assume its value is 5 in this case
 
- The correction action will be => 4*5 = 20v (you can use a voltage regulator in this case) however, this value might exceed the set point, causing an overshoot. After that, the system will recalculate all this again and it's possible that another overshoot may occur, and it might even continue oscillating.
+ The correction action will be: $$4*5=20v$$ (you can use a voltage regulator in this case) however, this value might exceed the set point, causing an overshoot. After that, the system will recalculate all this again and it's possible that another overshoot may occur, and it might even continue oscillating.
 
  At this point, the role of **derivative control** comes into play.
 
@@ -20,4 +20,23 @@
  Its primary role is to predict future error by analyzing the rate at which the process variable is changing and multiplting it by constant k_d, thereby applying a dampening effect that minimizes overshoot and stabilizes the system.
 
  # What's the role of Integral control?
- It's primary role is to eliminate steady-state error. By accumulating the error over time and multiplying it by constant k_i, it forces the system's output to exactly match the desired target, compensating for persistent offsets and external disturbances. 
+ It's primary role is to eliminate steady-state error. By accumulating the error over time and multiplying it by constant k_i, it forces the syst10em's output to exactly match the desired target, compensating for persistent offsets and external disturbances. 
+
+
+
+ ## PID Controller Formula
+
+The controller calculates the control output $u(t)$ based on the error $e(t)$, which is the difference between the setpoint and the measured speed:
+
+$$u(t) = K_p e(t) + K_i \int_0^t e(\tau) d\tau + K_d \frac{de(t)}{dt}$$
+
+### Where:
+* **$K_p$ (Proportional Gain):** Corrects the error based on its current value.
+* **$K_i$ (Integral Gain):** Corrects the error based on the accumulation of past errors.
+* **$K_d$ (Derivative Gain):** Predicts future error based on its current rate of change.
+
+
+
+
+
+
