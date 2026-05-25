@@ -11,7 +11,11 @@
 
  A motor has a direction of 5 degrees, which corresponds to 0.5v and the set point is 45 degrees, corresponding to 4.5v. The error here equals to 4v (4.5-0.5). We multiply this error by a constant k_p, whose appropiate value ypu determine. Let's assume its value is 5 in this case
 
- The correction action will be: $$4*5=20v$$ (you can use a voltage regulator in this case) however, this value might exceed the set point, causing an overshoot. After that, the system will recalculate all this again and it's possible that another overshoot may occur, and it might even continue oscillating.
+ The correction action will be:
+ 
+ $$4*5=20v$$
+ 
+ (you can use a voltage regulator in this case) however, this value might exceed the set point, causing an overshoot. After that, the system will recalculate all this again and it's possible that another overshoot may occur, and it might even continue oscillating.
 
  At this point, the role of **derivative control** comes into play.
 
